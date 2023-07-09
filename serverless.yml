@@ -7,6 +7,12 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:*
+      Resource: 
+        - arn:aws:dynamodb:us-east-1:171267240569:table/MarcaTable
 
 
 
@@ -24,6 +30,14 @@ functions:
        - httpApi:
           path: /serviciogetswpi/{codigo}
           method: get
+  
+
+  servicePostMarca:
+     handler: src/handlers/handlerMarca.servicePostMarca
+     events:
+       - httpApi:
+          path: /serviciomarca
+          method: post
 
 
 
