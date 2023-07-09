@@ -46,6 +46,100 @@ const serviceGetAllMarcas=async()=>{
         
     } catch (error) {
 
+        console.log(error)
+
+        return {
+            statusCode:400,
+            headers:{
+              'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+              message:'Error al cargar los datos',
+              error:error
+            })
+          }
+        
+    }
+}
+
+/**
+* Funcion cosumo-api: Maneja la lógica para pode realizar peticiones get de una Marca Especifica
+* 
+*/
+
+const serviceGetMarca=async(event)=>{
+
+    try {
+
+        console.log('GetMarca INIT');
+
+        const {id}=event.pathParameters;
+        const dynamodb=new AWS.DynamoDB.DocumentClient();
+       
+
+        const uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[4][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
+
+      // Validar si el ID es un UUID válido
+        if (!uuidRegex.test(id)) {
+        return {
+            statusCode: 400,
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+            message: 'El ID ingresado no es válido'
+            })
+        };
+        }
+
+
+ 
+
+      // Obtener la marca desde la base de datos
+        
+      const result = await dynamodb.get({
+        TableName: 'MarcaTable',
+        Key: {
+          id: id
+        }
+      }).promise();
+
+      console.log('Data ',result)
+
+       // Validar si la marca existe
+    if (!result.Item) {
+        return {
+          statusCode: 404,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'La marca no existe'
+          })
+        };
+      }
+
+
+      return {
+
+        statusCode:200,
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({
+            message:'Datos',
+            data:result
+          })
+
+    }
+
+
+
+        
+    } catch (error) {
+
+        console.log(error)
+
         return {
             statusCode:400,
             headers:{
@@ -137,6 +231,7 @@ const servicePostMarca=async(event)=>{
 
 module.exports={
     serviceGetAllMarcas,
+    serviceGetMarca,
     servicePostMarca: middy(servicePostMarca).use(httpJsonBodyParser())
 
 }

@@ -44,6 +44,12 @@ functions:
        - httpApi:
           path: /api/marcas
           method: get
+  serviceGetMarca:
+     handler: src/handlers/handlerMarca.serviceGetMarca
+     events:
+       - httpApi:
+          path: /api/marcas/{id}
+          method: get
 
 
 
