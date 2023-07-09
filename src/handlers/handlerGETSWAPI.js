@@ -83,7 +83,7 @@ const servicioALLGETSWAPI=async(event)=>{
 * 
 */
 
-/*const  servicioGETSWAPI=async (event)=>{
+const  servicioGETSWAPI=async (event)=>{
 
       try {
 
@@ -154,11 +154,11 @@ const servicioALLGETSWAPI=async(event)=>{
 
         
       }
-}*/
+}
 
 
 module.exports ={
 
-    //servicioGETSWAPI,
+    servicioGETSWAPI,
     servicioALLGETSWAPI
 }

@@ -10,7 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.4.0"
+    "@middy/core": "^4.5.5",
+    "@middy/http-error-handler": "^4.5.5",
+    "@middy/http-header-normalizer": "^4.5.5",
+    "@middy/http-json-body-parser": "^4.5.5",
+    "aws-sdk": "^2.1413.0",
+    "axios": "^1.4.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "jest": "^29.6.1"
