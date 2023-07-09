@@ -1,0 +1,28 @@
+
+service: my-api-serverless
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+
+
+functions:
+  servicioGETALL:
+    handler: src/handlers/handlerGETSWAPI.servicioALLGETSWAPI
+    events: 
+      - httpApi:
+          path: /serviciogetswpi
+          method: get
+  
+  serviceGET:
+     handler: src/handlers/handlerGETSWAPI.servicioGETSWAPI
+     events:
+       - httpApi:
+          path: /serviciogetswpi/{codigo}
+          method: get
+
+  
