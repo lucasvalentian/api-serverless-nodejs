@@ -21,14 +21,14 @@ functions:
     handler: src/handlers/handlerGETSWAPI.servicioALLGETSWAPI
     events: 
       - httpApi:
-          path: /serviciogetswpi
+          path: /api/serviciogetswpi
           method: get
   
   serviceGET:
      handler: src/handlers/handlerGETSWAPI.servicioGETSWAPI
      events:
        - httpApi:
-          path: /serviciogetswpi/{codigo}
+          path: /api/serviciogetswpi/{codigo}
           method: get
   
 
@@ -36,9 +36,14 @@ functions:
      handler: src/handlers/handlerMarca.servicePostMarca
      events:
        - httpApi:
-          path: /serviciomarca
+          path: /api/marcas
           method: post
-
+  serviceGetAllMarca:
+     handler: src/handlers/handlerMarca.serviceGetAllMarcas
+     events:
+       - httpApi:
+          path: /api/marcas
+          method: get
 
 
 

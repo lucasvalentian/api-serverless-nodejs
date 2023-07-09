@@ -12,8 +12,50 @@ const httpJsonBodyParser  = require('@middy/http-json-body-parser');
 const serviceGetAllMarcas=async()=>{
 
     try {
+
+        console.log('GetMarcas INIT');
+
+        const params = {
+            TableName: 'MarcaTable',
+          };
+
+          console.log('Tabla ', params);
+
+          const dynamodb=new AWS.DynamoDB.DocumentClient();
+          const result = await dynamodb.scan(params).promise();
+          const marcas = result.Items;
+
+          console.log('Lista de Marcas ',marcas)
+
+
+          return {
+
+            statusCode:200,
+              headers:{
+                'Content-Type':'application/json'
+              },
+              body: JSON.stringify({
+                message:'Datos Cargados Correctamente',
+                data:marcas
+              })
+    
+        }
+
+
+
         
     } catch (error) {
+
+        return {
+            statusCode:400,
+            headers:{
+              'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+              message:'Error al cargar los datos',
+              error:error
+            })
+          }
         
     }
 }
