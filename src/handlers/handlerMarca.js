@@ -127,7 +127,7 @@ const serviceGetMarca=async(event)=>{
             'Content-Type':'application/json'
           },
           body: JSON.stringify({
-            message:'Datos',
+            message:'Datos Cargados Correctamente',
             data:result
           })
 
@@ -168,6 +168,11 @@ const servicePostMarca=async(event)=>{
 
         const dynamodb=new AWS.DynamoDB.DocumentClient();
         const {nombre,descripcion} = event.body;
+
+        if (!event.body || !nombre || !descripcion) {
+          throw new Error('Parámetros faltantes o incorrectos');
+        }
+        
 
         console.log('Data de Input ', nombre, descripcion);
 

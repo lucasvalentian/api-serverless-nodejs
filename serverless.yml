@@ -16,6 +16,23 @@ provider:
 
 
 
+plugins:
+  - serverless-openapi-documentation
+
+
+custom:
+  documentation:
+    version: 1.0.0
+    title: My API Documentation
+    endpoints:
+      - path: /api/marcas/{id}
+        method: get
+        functionName: serviceGetMarca
+        description: Endpoint para obtener una marca por su ID
+
+
+
+
 functions:
   servicioGETALL:
     handler: src/handlers/handlerGETSWAPI.servicioALLGETSWAPI
@@ -50,7 +67,8 @@ functions:
        - httpApi:
           path: /api/marcas/{id}
           method: get
-
+          
+ 
 
 
 resources:

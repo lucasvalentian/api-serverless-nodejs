@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: Api-Serverless-NodeJs
+  description: Documentación del API Marcas
+  version: 1.0.0
+servers:
+  - url: 'https://vw4s3mtfjj.execute-api.us-east-1.amazonaws.com'
+paths:
+  /api/marcas:
+    get:
+      summary: Obtener todas las marcas
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Marca'
+    post:
+      summary: Crear una marca
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarcaInput'
+      responses:
+        '200':
+          description: Almacenado correctamente
+  /api/marcas/{id}:
+    get:
+      summary: Obtener una marca por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Marca'
+components:
+  schemas:
+    Marca:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        createdAt:
+          type: string
+    MarcaInput:
+      type: object
+      properties:
+        nombre:
+          type: string
+        descripcion:
+          type: string
+      required:
+        - nombre
+        - descripcion

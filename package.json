@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +16,12 @@
     "@middy/http-json-body-parser": "^4.5.5",
     "aws-sdk": "^2.1413.0",
     "axios": "^1.4.0",
+    "serverless-openapi-documentation": "^0.4.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "jest": "^29.6.1"
+    "chai": "^4.3.7",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.2.0"
   }
 }
