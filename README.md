@@ -1,6 +1,6 @@
 # Api-Serverless-NodeJs
 
-Prueba Tecnica
+Prueba Técnica
 
 
 ## Development
