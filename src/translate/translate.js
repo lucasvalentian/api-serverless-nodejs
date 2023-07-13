@@ -3,7 +3,7 @@
  const translateFields = (data,isArralEnty) => {
 
 
-        //CREACIÓN DLE OBJETO translations 
+        //CREACIÓN DLE OBJETO para la traducción 
         const translations = {
 
             nombre: 'name',
@@ -25,19 +25,6 @@
 
       
 
-
-         /* return data.reduce((translatedData, person) => {
-            const translatedPerson = {};
-            for (const key in person) {
-              if (translations[key]) {
-                translatedPerson[translations[key]] = person[key];
-              } else {
-                translatedPerson[key] = person[key];
-              }
-            }
-            translatedData.push(translatedPerson);
-            return translatedData;
-          }, []);*/
 
             //Logica para poder manejar la traducción del array del api
 
