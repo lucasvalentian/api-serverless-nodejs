@@ -12,18 +12,20 @@ provider:
       Action: 
         - dynamodb:*
       Resource: 
-        - arn:aws:dynamodb:us-east-1:171267240569:table/MarcaTable
+        - ${self:custom.marcaTableArn}
 
 
+  
 
 plugins:
   - serverless-openapi-documentation
 
 
 custom:
+  marcaTableArn: arn:aws:dynamodb:us-east-1:171267240569:table/MarcaTable
   documentation:
     version: 1.0.0
-    title: My API Documentation
+    title: Api-Serverless-NodeJs
     endpoints:
       - path: /api/marcas/{id}
         method: get

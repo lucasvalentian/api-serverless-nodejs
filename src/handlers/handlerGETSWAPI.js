@@ -1,6 +1,7 @@
 'use strict';
 const axios = require('axios');
 const Config= require('../context/config')
+const translate = require('../translate/translate');
 
 
 /**
@@ -20,23 +21,8 @@ const servicioALLGETSWAPI=async(event)=>{
         const response= await axios.get(url);
         console.log('Data '+ response);
 
-        const data = response.data.results.map((person) => ({
-            nombre: person.name,
-            altura: person.height,
-            peso: person.mass,
-            color_piel: person.skin_color,
-            color_ojos:person.eye_color,
-            año_nacimiento:person.birth_year,
-            genero: person.gender,
-            mundo_natal:person.homeworld,
-            peliculas: person.films,
-            especies: person.species,
-            vehiculos: person.vehicles,
-            naves_estelares: person.starships,
-            creado: person.created,
-            editado: person.edited,
-            url: person.url
-          }));
+          //Manejo de la logica para poder enviar la data a traducir
+        const data = translate.translateFields(response.data.results,false);
 
 
           return {
@@ -95,26 +81,10 @@ const  servicioGETSWAPI=async (event)=>{
         url = url.replace("[CODE]", codigo);
         console.log('Url del api '+ url);
         const response= await axios.get(url);
-        console.log('Data '+ response);
-
-        const data = {
-                      nombre: response.data.name,
-                      altura: response.data.height,
-                      peso: response.data.mass,
-                      color_piel: response.data.skin_color,
-                      color_ojos: response.data.eye_color,
-                      año_nacimiento: response.data.birth_year,
-                      genero: response.data.gender,
-                      mundo_natal: response.data.homeworld,
-                      peliculas: response.data.films,
-                      especies: response.data.species,
-                      vehiculos: response.data.vehicles,
-                      naves_estelares: response.data.starships,
-                      creado: response.data.created,
-                      editado: response.data.edited,
-                      url: response.data.url
-        };
+        console.log('Data '+ response.data);
         
+        //Manejo de la logica para poder enviar la data a traducir
+        const data = translate.translateFields(response.data,true);
 
 
           return {
