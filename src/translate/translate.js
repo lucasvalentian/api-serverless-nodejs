@@ -4,24 +4,28 @@
 
 
         //CREACIÓN DLE OBJETO para la traducción 
+     
+
         const translations = {
 
-            nombre: 'name',
-            altura: 'height',
-            peso: 'mass',
-            color_piel: 'skin_color',
-            color_ojos:'eye_color',
-            año_nacimiento:'birth_year',
-            genero: 'gender',
-            mundo_natal:'homeworld',
-            peliculas: 'films',
-            especies: 'species',
-            vehiculos: 'vehicles',
-            naves_estelares: 'starships',
-            creado: 'created',
-            editado: 'edited',
-            url: 'url'
-        };
+          name: 'nombre',
+          height: 'altura',
+          mass: 'peso',
+          hair_color: 'color_pelo',
+          skin_color: 'color_piel',
+          eye_color:'color_ojos',
+          birth_year:'año_nacimiento',
+          gender: 'genero',
+          homeworld:'mundo_natal',
+          films: 'peliculas',
+          species: 'especies',
+          vehicles: 'vehiculos',
+          starships: 'naves_estelares',
+          created: 'creado',
+          edited: 'editado',
+          url: 'url'
+      };
+
 
       
 

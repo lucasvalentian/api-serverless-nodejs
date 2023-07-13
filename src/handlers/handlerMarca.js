@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 const AWS = require('aws-sdk');
 const middy = require('@middy/core');
 const httpJsonBodyParser  = require('@middy/http-json-body-parser');
-const {getAllMarcas,getMarcaById,saveMarca}=require('../model/model');
+const {getAllMarcas,getMarcaById,saveMarca}=require('../model/model-marca');
 const validator = require('../validator/uuidRegex');
 
 
@@ -150,7 +150,7 @@ const servicePostMarca=async(event)=>{
 
         console.log('postMarca INIT');
 
-        //const dynamodb=new AWS.DynamoDB.DocumentClient();
+       
         const {nombre,descripcion} = event.body;
 
         if (!event.body || !nombre || !descripcion) {
@@ -174,11 +174,7 @@ const servicePostMarca=async(event)=>{
         //GUARDAR LOS DATOS
         await saveMarca(marca)
 
-        /*await dynamodb.put({
-            TableName:'MarcaTable',
-            Item:marca
-         }).promise()*/
-
+       
          return {
 
             statusCode:200,
